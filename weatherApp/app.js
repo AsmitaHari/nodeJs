@@ -1,11 +1,9 @@
-console.log('Starting')
+const request = require('postman-request')
+const geocode = require('./utils/geocode')
+const forecast = require('./utils/forecast')
 
-setTimeout(() => {
-    console.log('2 Second Timer')
-}, 2000)
-
-setTimeout(() => {
-    console.log('0 Second Timer')
-}, 0)
-
-console.log('Stopping')
+geocode('New York', (error,data)=>{
+ forecast(data.latitude,data.longitude, (fErrpr,fData)=>{
+      console.log("Forecast Data",fData )
+  })
+})
